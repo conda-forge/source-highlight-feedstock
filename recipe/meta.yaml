@@ -16,7 +16,7 @@ build:
 
 requirements:
   build:
-    - toolchain
+    - {{ compiler("c") }}
     - boost-cpp 1.66.0
     - libtool
     - texinfo
