@@ -23,6 +23,8 @@ requirements:
     - boost-cpp
     - libtool
     - texinfo
+  run:
+    - {{ pin_compatible('boost-cpp', max_pin='x.x.x') }}
 
 test:
   commands:
