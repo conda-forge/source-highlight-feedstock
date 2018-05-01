@@ -17,13 +17,12 @@ build:
 requirements:
   build:
     - {{ compiler("c") }}
-    - boost-cpp 1.66.0
-    - libtool
-    - texinfo
     - automake
     - autoconf
-  run:
-    - boost-cpp 1.66.0
+  host:
+    - boost-cpp
+    - libtool
+    - texinfo
 
 test:
   commands:
