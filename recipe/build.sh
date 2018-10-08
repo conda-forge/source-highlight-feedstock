@@ -10,6 +10,7 @@ cd build
 ../configure \
     --prefix=$PREFIX \
     CXXFLAGS=-I${PREFIX}/include/boost \
-    LDFLAGS=-L${PREFIX}/lib
+    LDFLAGS=-L${PREFIX}/lib \
+    --with-boost-libdir=${PREFIX}/lib
 make
 make install
