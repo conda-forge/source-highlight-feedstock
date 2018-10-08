@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export CXXFLAGS="${CXXFLAGS}"
+export CXXFLAGS="${CXXFLAGS} -I${PREFIX}/lib"
 export LDFLAGS="${LDFLAGS}"
 
 autoreconf -i
@@ -8,6 +8,5 @@ mkdir build
 cd build
 ../configure \
     --prefix=$PREFIX \
-    --with-boost-libdir=${PREFIX}/lib
 make
 make install
