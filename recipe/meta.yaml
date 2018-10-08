@@ -17,14 +17,13 @@ build:
 requirements:
   build:
     - {{ compiler("c") }}
+    - {{ compiler("cxx") }}
     - automake
     - autoconf
   host:
     - boost-cpp
     - libtool
     - texinfo
-  run:
-    - {{ pin_compatible('boost-cpp', max_pin='x.x.x') }}
 
 test:
   commands:
