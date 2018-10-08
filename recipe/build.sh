@@ -8,6 +8,7 @@ autoreconf -i
 mkdir build
 cd build
 ../configure \
-    --prefix=$PREFIX
+    --prefix=$PREFIX \
+    --with-boost-libdir=${PREFIX}/lib
 make
 make install
