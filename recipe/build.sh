@@ -5,7 +5,7 @@
 # export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"
 
 if [ "${UNAME}" == "Linux" ]; then
-  CXXFLAGS := $(filter-out -std=c++17,$(CXXFLAGS))
+  export CXXFLAGS := ${filter-out -std=c++17,${CXXFLAGS}}
 fi
 
 mkdir build
