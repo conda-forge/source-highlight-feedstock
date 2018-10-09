@@ -4,6 +4,10 @@
 # export CXXFLAGS="${CXXFLAGS} -I${PREFIX}/include/boost"
 # export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"
 
+if [ "${UNAME}" == "Linux" ]; then
+  CXXFLAGS := $(filter-out -std=c++17,$(CXXFLAGS))
+fi
+
 mkdir build
 cd build
 ../configure \
