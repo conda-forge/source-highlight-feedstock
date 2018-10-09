@@ -5,6 +5,7 @@ if [ $(uname) == Linux ]; then
 fi
 
 echo $(uname)
+echo $CXXFLAGS
 
 mkdir build
 cd build
