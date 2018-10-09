@@ -4,7 +4,6 @@
 # export CXXFLAGS="${CXXFLAGS} -I${PREFIX}/include/boost"
 # export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"
 
-autoreconf -i
 mkdir build
 cd build
 ../configure \
