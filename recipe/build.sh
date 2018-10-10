@@ -1,8 +1,7 @@
 #!/bin/bash
 
 if [ $(uname) == Linux ]; then
-  export CXXFLAGS="${CXXFLAGS/" -std=c++17"/} -std=c++14 -I${PREFIX}/include/boost"
-  export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"
+  export CXXFLAGS="${CXXFLAGS/" -std=c++17"/} -std=c++14"
 fi
 
 echo $(uname)
