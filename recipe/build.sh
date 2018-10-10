@@ -1,11 +1,8 @@
 #!/bin/bash
 
 if [ $(uname) == Linux ]; then
-  export CXXFLAGS="${CXXFLAGS/" -std=c++17"/} -std=c++14"
+  export CXXFLAGS="${CXXFLAGS/" -std=c++17"/} -std=c++11"
 fi
-
-echo $(uname)
-echo $CXXFLAGS
 
 mkdir build
 cd build
