@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 2
+  number: 3
   skip: true  # [win]
 
 requirements:
@@ -28,8 +28,6 @@ requirements:
 test:
   commands:
     - source-highlight --help
-    - conda inspect linkages -p $PREFIX source-highlight  # [not win]
-    - conda inspect objects -p $PREFIX source-highlight  # [osx]
 
 about:
   home: https://www.gnu.org/software/src-highlite/
