@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 3
+  number: 4
   skip: true  # [win]
 
 requirements:
@@ -20,11 +20,10 @@ requirements:
     - {{ compiler("cxx") }}
     - make
   host:
-    - boost-cpp
+    - libboost-devel
     - libtool
     - texinfo
   run:
-    - {{ pin_compatible('boost-cpp', max_pin='x.x.x') }}
 
 test:
   commands:
