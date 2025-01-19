@@ -24,6 +24,7 @@ requirements:
     - gettext-tools
     - libboost-devel         # [build_platform != target_platform]
     - make
+    - sed
     - texinfo
   host:
     - libboost-devel
