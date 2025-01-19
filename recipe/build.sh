@@ -1,16 +1,39 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-if [ $(uname) == Linux ]; then
-  export CXXFLAGS="${CXXFLAGS/" -std=c++17"/}"
-  export LDFLAGS="$LDFLAGS -Wl,-rpath-link,$PREFIX/lib"
-  # TODO: remove this hack and fix the build system issue with gcc7 compiler flags
-  export LD_LIBRARY_PATH="$PREFIX/lib:$LD_LIBRARY_PATH"
+set -o xtrace -o nounset -o pipefail -o errexit
+
+if [[ ${CONDA_BUILD_CROSS_COMPILATION:-0} == 1 ]]; then
+    CROSS_LDFLAGS=${LDFLAGS}
+    CROSS_CC="${CC}"
+    CROSS_CXX="${CXX}"
+    CROSS_LD="${LD}"
+
+    LDFLAGS=${LDFLAGS//${PREFIX}/${BUILD_PREFIX}}
+    CC=${CC//${CONDA_TOOLCHAIN_HOST}/${CONDA_TOOLCHAIN_BUILD}}
+    CXX=${CXX//${CONDA_TOOLCHAIN_HOST}/${CONDA_TOOLCHAIN_BUILD}}
+    LD="${LD//${CONDA_TOOLCHAIN_HOST}/${CONDA_TOOLCHAIN_BUILD}}"
+
+    export CXXFLAGS="${CXXFLAGS} -std=c++11"
+    autoreconf --force --verbose --install
+    ./configure \
+        --prefix=$BUILD_PREFIX \
+        --with-boost-libdir=${BUILD_PREFIX}/lib
+    make -j${CPU_COUNT}
+    make install
+    make clean
+
+    LDFLAGS="${CROSS_LDFLAGS}"
+    CC=${CROSS_CC}
+    CXX=${CROSS_CXX}
+    LD=${CROSS_LD}
+
+    sed -i "s?\$(top_builddir)/src?${BUILD_PREFIX}/bin?" doc/Makefile.am
 fi
 
-mkdir build
-cd build
-../configure \
+export CXXFLAGS="${CXXFLAGS} -std=c++11"
+autoreconf --force --verbose --install
+./configure \
     --prefix=$PREFIX \
     --with-boost-libdir=${PREFIX}/lib
-make
+make -j${CPU_COUNT}
 make install
