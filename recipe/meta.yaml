@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 6
+  number: 7
   skip: true  # [win]
 
 requirements:
@@ -24,7 +24,6 @@ requirements:
     - libboost-devel
     - libtool
     - texinfo
-  run:
 
 test:
   commands:
@@ -33,7 +32,6 @@ test:
 about:
   home: https://www.gnu.org/software/src-highlite/
   license: GPL-3.0-only
-  license_family: GPL
   license_file: COPYING
   summary: 'This program, given a source file, produces a document with syntax highlighting.'
   doc_url: https://www.gnu.org/software/src-highlite/source-highlight.html
@@ -41,6 +39,6 @@ about:
 
 extra:
   recipe-maintainers:
+    - danielnachun
     - carlodri
     - scopatz
-    
