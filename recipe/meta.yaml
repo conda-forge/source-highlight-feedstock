@@ -22,11 +22,12 @@ requirements:
     - autoconf
     - automake
     - gettext-tools
+    - libboost-devel         # [build_platform != target_platform]
     - make
+    - texinfo
   host:
     - libboost-devel
     - libtool
-    - texinfo
 
 test:
   commands:
