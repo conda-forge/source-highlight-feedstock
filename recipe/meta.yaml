@@ -19,6 +19,9 @@ requirements:
     - {{ compiler("c") }}
     - {{ stdlib("c") }}
     - {{ compiler("cxx") }}
+    - autoconf
+    - automake
+    - gettext-tools
     - make
   host:
     - libboost-devel
